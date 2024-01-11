@@ -1,0 +1,45 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Menu</mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#">Home</a>
+      <a mat-list-item href="#">Signin</a>
+      <a mat-list-item href="#">Singup</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    
+    <!-- mat-tool bar for top of main nav
+      buttons for signin and signup
+    -->
+    <mat-toolbar>
+      @if (isHandset$ | async) {
+        <button
+          type="button"
+          aria-label="Toggle sidenav"
+          mat-icon-button
+          (click)="drawer.toggle()">
+          <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+        </button>
+      }
+      <span>Bookie</span>
+      @if ((isHandset$ | async) === false) {
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>login</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon><span class="material-symbols-outlined">
+          person_add
+          </span></mat-icon>
+      </button>
+     }
+    </mat-toolbar>
+
+    <!-- Add Content Here -->
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
