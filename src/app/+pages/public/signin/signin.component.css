@@ -1,0 +1,16 @@
+.form {
+    min-width: 150px;
+    max-width: 500px;
+    width: 100%;
+    background-color: aqua;
+  }
+
+  .form_handset{
+    text-align: center;
+    background-color: black;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  

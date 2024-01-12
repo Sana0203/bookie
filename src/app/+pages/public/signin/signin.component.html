@@ -1,1 +1,36 @@
-<p>signin works!</p>
+
+<form [ngClass]="[ !isHandset$ ? 'form' : 'form_handset' ]">
+    <mat-form-field class="example-full-width">
+        <mat-label>Telephone</mat-label>
+        <span matPrefix>+1 &nbsp;</span>
+        <input type="tel" [formControl]="telFormControl" matInput placeholder="555-555-1234">
+        <mat-icon matSuffix>phone</mat-icon>
+      <!--
+      @if (emailFormControl.hasError('email') && !emailFormControl.hasError('required')) {
+        <mat-error>Please enter a valid email address</mat-error>
+      }
+      -->
+      @if (telFormControl.hasError('required')) {
+        <mat-error>Telphone is <strong>required</strong></mat-error>
+      }
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width">
+        <mat-label>Password</mat-label>
+        <input type="password" matInput [formControl]="passFormControl" placeholder="Ex. pat@example.com">
+        @if (passFormControl.hasError('required')) {
+          <mat-error>Passowrd is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Confirm Password</mat-label>
+        <input type="password" matInput [formControl]="passFormControl" placeholder="Ex. pat@example.com">
+        @if (passFormControl.hasError('required')) {
+          <mat-error>Passowrd is <strong>required</strong></mat-error>
+        }
+      </mat-form-field>
+
+      <button mat-raised-button>Basic</button>
+
+  </form>
