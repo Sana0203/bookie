@@ -20,3 +20,6 @@
   flex: 1 1 auto;
 }
 
+#content {
+  padding: 4px;
+}
