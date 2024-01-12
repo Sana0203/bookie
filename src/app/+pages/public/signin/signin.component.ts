@@ -6,7 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable, map, shareReplay } from 'rxjs';
-import { NgClass } from '@angular/common';
+import { AsyncPipe, NgClass } from '@angular/common';
 
 @Component({
   selector: 'bookie-signin',
@@ -17,7 +17,9 @@ import { NgClass } from '@angular/common';
     ReactiveFormsModule,
     MatIconModule,
     MatButtonModule,
-    NgClass ],
+    NgClass,
+    AsyncPipe
+   ],
   templateUrl: './signin.component.html',
   styleUrl: './signin.component.css'
 })
