@@ -1,5 +1,7 @@
 
-<form [ngClass]="[ !(isHandset$ | async) ? 'form' : 'form_handset' ]">
+<div class="form" >
+<form [class.div_handset]="(isHandset$ | async)"
+[class.div_form]="!(isHandset$ | async)">
     <mat-form-field class="example-full-width">
         <mat-label>Telephone</mat-label>
         <span matPrefix>+1 &nbsp;</span>
@@ -34,3 +36,4 @@
       <button mat-raised-button>Basic</button>
 
   </form>
+</div>
