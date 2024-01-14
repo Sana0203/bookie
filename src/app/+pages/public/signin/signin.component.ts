@@ -24,8 +24,9 @@ import { AsyncPipe } from '@angular/common';
 })
 export class SigninComponent {
 
-  telFormControl = new FormControl('', [Validators.required]); //Validators.pattern()
-  passFormControl = new FormControl('', [Validators.required, Validators.minLength(8)]);
+  telFormControl = new FormControl('', [Validators.required, Validators.pattern("^((\\+[1-9]{1,2})|00[1-9]{1,2})? ?[0-9]{3} ?-? ?[0-9]{3} ?-?[0-9]{4}$")]); 
+  passFormControl = new FormControl('', [Validators.required, Validators.minLength(8) , Validators.pattern("^(?=.*[A-Z])(?=.*[\\W]).+$")]);
+  //passConfirmFormControl = new FormControl('', [Validators.required, Validators.pattern("^(?=.*[A-Z])(?=.*[\W_]).+$")]); 
   
   private breakpointObserver = inject(BreakpointObserver);
 
