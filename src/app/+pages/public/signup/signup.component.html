@@ -1,1 +1,110 @@
-<p>signup works!</p>
+
+<div class="form" >
+    <form [formGroup]="signupForm" [class.div_handset]="(isHandset$ | async)"
+    [class.div_form]="!(isHandset$ | async)">
+        
+    
+        <mat-form-field class="full-width">
+          <mat-label>Name</mat-label>
+          <input type="text" [formControl]="signupForm.controls.name"  matInput>
+
+          @if (signupForm.controls.name.hasError('pattern')) {
+            <mat-error>Please enter a valid name</mat-error>
+          }
+
+          @if (signupForm.controls.name.hasError('required')){
+            <mat-error>Name is <strong>required</strong></mat-error>
+          }
+
+        </mat-form-field>
+        
+        <mat-form-field class="full-width">
+          <mat-label>Username</mat-label>
+          <input type="text" [formControl]="signupForm.controls.username"  matInput>
+          
+          @if (signupForm.controls.username.hasError('pattern')) {
+            <mat-error>Username can include characters, digits, underline(_) and period(.)</mat-error>
+          }
+
+          @if (signupForm.controls.username.hasError('maxlength')) {
+            <mat-error>Username can be at most 10 characters.</mat-error>
+          }
+
+          @if (signupForm.controls.username.hasError('required')) {
+            <mat-error>Username is <strong>required</strong></mat-error>
+          }
+        </mat-form-field>
+
+        <!--
+        <mat-form-field>
+          <mat-label>Birthdate</mat-label>
+          <input matInput [matDatepicker]="picker">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+        -->
+
+        <mat-form-field class="full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="signupForm.controls.email" 
+           placeholder="Ex. pat@example.com">
+
+           @if (signupForm.controls.email.hasError('email') && !signupForm.controls.email.hasError('required')) {
+             <mat-error>Please enter a valid email address</mat-error>
+           }
+           @if (signupForm.controls.email.hasError('required')) {
+             <mat-error>Email is <strong>required</strong></mat-error>
+           }
+          </mat-form-field>
+
+        <mat-form-field class="full-width">
+            <mat-label>Telephone</mat-label>
+            <input type="tel" [formControl]="signupForm.controls.telphone" matInput placeholder="515-658-1234">
+            <mat-icon matSuffix>phone</mat-icon>
+    
+            @if (signupForm.controls.telphone.hasError('pattern')) {
+              <mat-error>Please enter a valid phone number.</mat-error>
+            }
+        </mat-form-field>
+    
+        <mat-form-field class="full-width">
+            <mat-label>Password</mat-label>
+            
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="signupForm.controls.password">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+    
+            @if (signupForm.controls.password.hasError('pattern')) {
+              <mat-error>Your password must contain at least one special characters and one uppercase letter.</mat-error>
+            }
+    
+            @if (signupForm.controls.password.hasError('minlength')) {
+              <mat-error>Your password should be at least 8 characters in length.</mat-error>
+            }
+    
+            @if (signupForm.controls.password.hasError('required')) {
+              <mat-error>Passowrd is <strong>required</strong></mat-error>
+            }
+          </mat-form-field>
+
+          <mat-form-field class="full-width">
+            <mat-label>Confirm password</mat-label>
+        
+            <input matInput [type]="hide ? 'password' : 'text'" [formControl]="signupForm.controls.passConfirm">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+              <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            @if (signupForm.controls.passConfirm.hasError('required')) {
+              <mat-error>Confirm your password</mat-error>
+            }
+            @if (signupForm.controls.passConfirm.hasError('pattern')) {
+              <mat-error>Your confirmation does not match your password. Try again.</mat-error>
+            }
+          </mat-form-field>
+          
+          <button mat-raised-button>Signin</button>
+    
+      </form>
+    </div>

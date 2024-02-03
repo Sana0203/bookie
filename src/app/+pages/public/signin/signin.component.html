@@ -2,7 +2,7 @@
 <div class="form" >
 <form [class.div_handset]="(isHandset$ | async)"
 [class.div_form]="!(isHandset$ | async)">
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="full-width">
         <mat-label>Telephone</mat-label>
         <input type="tel" [formControl]="telFormControl" matInput placeholder="515-658-1234">
         <mat-icon matSuffix>phone</mat-icon>
@@ -16,10 +16,14 @@
       }
     </mat-form-field>
 
-    <mat-form-field class="example-full-width">
+    <mat-form-field class="full-width">
         <mat-label>Password</mat-label>
-        <input type="text" matInput [formControl]="passFormControl">
         
+        <input matInput [type]="hide ? 'password' : 'text'" [formControl]="passFormControl">
+        <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+          <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+        </button>
+
         @if (passFormControl.hasError('pattern') 
           && !passFormControl.hasError('required')
             && !passFormControl.hasError('minLength')) {
@@ -36,18 +40,7 @@
           <mat-error>Passowrd is <strong>required</strong></mat-error>
         }
       </mat-form-field>
-
-      <!-- <mat-form-field class="example-full-width">
-        <mat-label>Confirm Password</mat-label>
-        <input type="password" matInput >
-         @if (passFormControl.hasError('pattern') && !passFormControl.hasError('required')) {
-          <mat-error>Your password does not match, please enter again.</mat-error>
-        } 
-        @if (passFormControl.hasError('required')) {
-          <mat-error><strong>Confirm</strong> your password</mat-error>
-        }
-      </mat-form-field> -->
-
+      
       <button mat-raised-button>Signin</button>
 
   </form>
