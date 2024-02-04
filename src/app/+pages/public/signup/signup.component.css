@@ -13,8 +13,22 @@
     .form{
       display:flex;
       justify-content: center;
-      padding: 40px 0 ;
       text-align: center;
+    }
+
+    .card{
+      width: fit-content;
+      background-color: #ecf0f1;
+      color: #34495e;
+      margin-top: 20px;
+    }
+
+    mat-card-header {
+      padding: 15px 15px;
+    }
+
+    mat-card-actions{
+      float: right;
     }
     
     .full-width {

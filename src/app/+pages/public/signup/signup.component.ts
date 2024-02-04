@@ -8,6 +8,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Observable, map, shareReplay } from 'rxjs';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'bookie-signup',
@@ -25,6 +26,7 @@ import { Observable, map, shareReplay } from 'rxjs';
     MatInputModule, 
     MatDatepickerModule, 
     MatIconModule,
+    MatCardModule
   ],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
@@ -69,6 +71,10 @@ export class SignupComponent {
       map(result => result.matches),
       shareReplay()
     );
+
+    reset():void{
+      this.signupForm.reset();
+    }
 
 
  compareValidator(control:AbstractControl): Validators {
